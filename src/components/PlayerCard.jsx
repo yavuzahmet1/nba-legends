@@ -13,7 +13,7 @@ const PlayerCard = ({ img, name, statistics }) => {
                 className='player-card rounded-4 m-auto'
                 onClick={change}>
                 {imgShow ? (
-                    <img variant="top" src={img} className='player-img' alt='image' />) : (
+                    <Card.Img variant="top" src={img} className='player-img' alt='image' />) : (
                     <ul className='m-auto'>
                         {statistics.map((item, index) => {
                             return <li className='h5 text-start list-unstyled'>{item}</li>
@@ -22,9 +22,9 @@ const PlayerCard = ({ img, name, statistics }) => {
                 )
 
                 }
-                <footer className='fw-bold d-flex justify-content-center'>
+                <Card.Footer className='fw-bold d-flex justify-content-center'>
                     <p>{name}</p>
-                </footer>
+                </Card.Footer>
             </Card>
         </div>
     )
