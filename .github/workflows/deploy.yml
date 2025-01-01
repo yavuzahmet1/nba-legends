@@ -1,0 +1,51 @@
+name: Deploy React App
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Configure React homepage
+        run: |
+          echo "Configuring homepage in package.json"
+          REPO_NAME=${{ github.event.repository.name }}
+          USER_NAME=${{ github.event.repository.owner.login }}
+          jq ".homepage=\"https://$USER_NAME.github.io/$REPO_NAME\"" package.json > tmp.json
+          mv tmp.json package.json
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
