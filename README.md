@@ -1,8 +1,3 @@
-<p>Clarusway<img align="right"
-  src="https://secure.meetupstatic.com/photos/event/3/1/b/9/600_488352729.jpeg"  width="15px"></p>
-
-<br>
-
 # Project-003: NBA Legends App
 
 ## Description
@@ -56,6 +51,8 @@ Build a NBA Legends App using ReactJS.
 - JS
 
 - ReactJS
+  
+- React Boostrap
 
 ### At the end of the project, students will be able to;
 
@@ -75,15 +72,4 @@ Build a NBA Legends App using ReactJS.
 
 ## Deployment Notes
 
-1. There should be only one lock file `package-lock.json` or `yarn.lock`.
-2. There shouldn't be any warnings in your application.
-3. If you have deployed your app to github pages before, you should remove `homepage` property from `package.json`.
-
-You can use any of these sites for deployment
-
-- https://www.netlify.com/
-- https://vercel.com/
-- https://render.com/
-- https://app.cyclic.sh/
-
-- You can add additional functionalities to your app.
+-To use the project, you need to download it from the repo to your local and then do => pnpm install 
